@@ -24,6 +24,14 @@ export class ProjectsComponent {
     const currentState = this.projects[index].isOpen;
     this.projects.forEach(p => p.isOpen = false);
     this.projects[index].isOpen = !currentState;
+
+    // Scroll to top and lock body scroll when modal opens
+    if (!currentState) {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
   }
 
   isAnyProjectOpen(): boolean {
@@ -32,6 +40,7 @@ export class ProjectsComponent {
 
   closeAll() {
     this.projects.forEach(p => p.isOpen = false);
+    document.body.style.overflow = '';
   }
 
   nextImage(index: number, event: Event) {
