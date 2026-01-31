@@ -1,23 +1,25 @@
-<section class="py-24 px-6 bg-black relative">
+<section class="py-24 px-6 dark:bg-black bg-white relative transition-colors duration-300">
     <div class="max-w-5xl mx-auto">
         <!-- Content -->
         <div #textBlock class="space-y-8 reveal-on-scroll text-center md:text-left">
             <h2
-                class="text-3xl md:text-5xl font-bold bg-gradient-to-r from-white to-gray-500 bg-clip-text text-transparent mb-8">
+                class="text-3xl md:text-5xl font-bold bg-gradient-to-r dark:from-white dark:to-gray-500 from-gray-900 to-gray-600 bg-clip-text text-transparent mb-8">
                 {{ ts.t.about.title }}
             </h2>
-            <div class="prose prose-invert text-gray-400 leading-relaxed max-w-none text-lg md:text-xl">
+            <div
+                class="prose prose-invert dark:text-gray-300 text-gray-700 leading-relaxed max-w-none text-xl md:text-2xl font-light tracking-wide">
                 <p [innerHTML]="ts.t.about.p1"></p>
                 <p [innerHTML]="ts.t.about.p2"></p>
             </div>
 
-            <div class="pt-8 flex gap-16 justify-center md:justify-start border-t border-gray-900 mt-8">
+            <div
+                class="pt-8 flex gap-16 justify-center md:justify-start dark:border-t dark:border-gray-900 border-t border-gray-200 mt-8">
                 <div>
-                    <p class="text-5xl font-bold text-white tracking-tighter">4+</p>
+                    <p class="text-5xl font-bold dark:text-white text-gray-900 tracking-tighter">4+</p>
                     <p class="text-sm font-mono text-fuchsia-400 uppercase tracking-widest mt-2">Years Exp.</p>
                 </div>
                 <div>
-                    <p class="text-5xl font-bold text-white tracking-tighter">20+</p>
+                    <p class="text-5xl font-bold dark:text-white text-gray-900 tracking-tighter">20+</p>
                     <p class="text-sm font-mono text-fuchsia-400 uppercase tracking-widest mt-2">Projects</p>
                 </div>
             </div>

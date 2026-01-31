@@ -13,12 +13,12 @@ interface Log {
   standalone: true,
   imports: [CommonModule, FormsModule],
   template: `
-    <div class="fixed top-24 right-6 z-50 flex flex-col items-end font-mono text-sm" 
+    <div class="fixed top-24 left-6 z-50 flex flex-col items-start font-mono text-sm" 
          [class.hidden]="!isOpen()"
          (mouseenter)="isHovered.set(true)"
          (mouseleave)="isHovered.set(false)">
       <!-- Terminal Window -->
-      <div class="bg-gray-900/90 backdrop-blur-md border border-gray-700 rounded-lg shadow-2xl overflow-hidden flex flex-col transition-all duration-300 transform origin-top-right"
+      <div class="bg-gray-900/90 backdrop-blur-md border border-gray-700 rounded-lg shadow-2xl overflow-hidden flex flex-col transition-all duration-300 transform origin-top-left"
            [class.scale-0]="!isOpen()"
            [class.scale-100]="isOpen()"
            [class.w-[350px]]="isHovered()"
@@ -75,7 +75,7 @@ interface Log {
     <!-- Toggle Button (Term Icon) -->
     <button *ngIf="!isOpen()" 
             (click)="toggle()" 
-            class="fixed top-24 right-6 z-50 bg-gray-900 border border-gray-700 p-3 rounded-full text-green-400 shadow-lg hover:shadow-green-500/20 transition-all hover:translate-y-1 group">
+            class="fixed top-24 left-6 z-50 bg-gray-900 border border-gray-700 p-3 rounded-full text-green-400 shadow-lg hover:shadow-green-500/20 transition-all hover:translate-y-1 group">
       <span class="material-icons font-mono text-xl">>_</span>
     </button>
   `,

@@ -45,4 +45,8 @@ export class ProjectsComponent {
     const p = this.projects[index];
     p.currentImgIndex = (p.currentImgIndex - 1 + p.images.length) % p.images.length;
   }
+
+  trackByIndex(index: number): number {
+    return index;
+  }
 }

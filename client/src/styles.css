@@ -17,6 +17,20 @@
   background: #d946ef; /* Fuchsia-500 */
 }
 
+/* Light Mode Scrollbar */
+.light ::-webkit-scrollbar-track,
+:root:not(.dark) ::-webkit-scrollbar-track {
+  background: #f3f4f6;
+}
+.light ::-webkit-scrollbar-thumb,
+:root:not(.dark) ::-webkit-scrollbar-thumb {
+  background: #d1d5db;
+}
+.light ::-webkit-scrollbar-thumb:hover,
+:root:not(.dark) ::-webkit-scrollbar-thumb:hover {
+  background: #d946ef;
+}
+
 html {
   scroll-behavior: smooth;
 }
@@ -25,8 +39,6 @@ body {
   margin: 0;
   font-family: 'Inter', sans-serif;
   overflow-x: hidden;
-  background-color: #000;
-  color: white;
 }
 
 /* Global Animations */
@@ -78,12 +90,22 @@ body {
 }
 
 .text-gradient {
-    background: linear-gradient(to right, #ffffff, #e879f9);
+    background: linear-gradient(to right, #1f2937, #e879f9);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    color: white; /* Fallback */
 }
+
+@media (prefers-color-scheme: dark) {
+    .text-gradient {
+        background: linear-gradient(to right, #ffffff, #e879f9);
+    }
+}
+
+.dark .text-gradient {
+    background: linear-gradient(to right, #ffffff, #e879f9);
+}
+
 
 /* Utilities */
 .delay-200 { animation-delay: 0.2s; }
@@ -136,14 +158,16 @@ body {
 
 /* Custom Highlight */
 .text-highlight {
-    background-color: rgba(232, 121, 249, 0.9); /* Slightly transparent */
+    background-color: rgba(232, 121, 249, 0.9);
     color: white;
-    padding: 2px 6px;
-    border-radius: 6px;
+    padding: 0px 9px;
+    border-radius: 8px;
     font-weight: 700;
-    font-size: 1.1em; /* Make it slightly bigger */
-    box-shadow: 0 2px 10px rgba(232, 121, 249, 0.3); /* Add glow */
-    vertical-align: middle;
+    font-size: 1.2em;
+    box-shadow: 0 2px 10px rgba(232, 121, 249, 0.3);
+    display: inline-block;
+    line-height: 1.4;
+    margin: 2px 0;
 }
 
 /* Ripple Animation */

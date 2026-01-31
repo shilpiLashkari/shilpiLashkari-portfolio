@@ -17,13 +17,14 @@ gsap.registerPlugin(ScrollTrigger);
 export class AboutComponent implements AfterViewInit, OnDestroy {
   ts = inject(TranslationService);
   @ViewChild('textBlock') textBlock!: ElementRef;
-  @ViewChild('imageBlock') imageBlock!: ElementRef;
 
   ngOnDestroy() {
-    ScrollTrigger.getAll().filter(st => st.vars.trigger === this.textBlock?.nativeElement || st.vars.trigger === this.imageBlock?.nativeElement).forEach(t => t.kill());
+    ScrollTrigger.getAll().filter(st => st.vars.trigger === this.textBlock?.nativeElement).forEach(t => t.kill());
   }
 
   ngAfterViewInit() {
+    if (!this.textBlock) return;
+
     gsap.to(this.textBlock.nativeElement, {
       scrollTrigger: {
         trigger: this.textBlock.nativeElement,
@@ -32,18 +33,6 @@ export class AboutComponent implements AfterViewInit, OnDestroy {
       opacity: 1,
       y: 0,
       duration: 1,
-      ease: 'power3.out'
-    });
-
-    gsap.to(this.imageBlock.nativeElement, {
-      scrollTrigger: {
-        trigger: this.imageBlock.nativeElement,
-        start: 'top 80%',
-      },
-      opacity: 1,
-      x: 0,
-      duration: 1,
-      delay: 0.2,
       ease: 'power3.out'
     });
   }

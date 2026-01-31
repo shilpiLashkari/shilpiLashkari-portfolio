@@ -1,5 +1,5 @@
-<main [class.dark]="isDarkMode()"
-  class="bg-black text-white min-h-screen selection:bg-fuchsia-500 selection:text-black">
+<main
+  class="dark:bg-black bg-white dark:text-white text-gray-900 min-h-screen selection:bg-fuchsia-500 selection:text-black transition-colors duration-300">
 
   <app-loader *ngIf="isLoading()"></app-loader>
   <app-background-animation></app-background-animation>
@@ -7,19 +7,19 @@
 
   <!-- Navbar -->
   <nav
-    class="fixed top-0 w-full z-50 backdrop-blur-md bg-black/50 border-b border-white/5 transition-all duration-300 transform"
+    class="fixed top-0 w-full z-50 backdrop-blur-md dark:bg-black/50 bg-white/70 border-b dark:border-white/5 border-gray-200 transition-all duration-300 transform"
     [class.translate-y-[-100%]]="isLoading()" [class.translate-y-0]="!isLoading()" [class.duration-1000]="!isLoading()">
     <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
       <!-- Logo -->
       <a href="#" class="text-2xl font-bold text-fuchsia-500 tracking-tighter hover:scale-105 transition-transform">
-        <span class="text-white">S</span>L.
+        <span class="dark:text-white text-gray-900">S</span>L.
       </a>
 
       <!-- Desktop Links (Single Page Scroll) -->
       <div class="hidden md:flex gap-10 text-sm font-semibold tracking-wide">
         <a *ngFor="let item of ['about', 'experience', 'projects', 'contact']" [href]="'#' + item"
           (click)="setActiveSection(item)" class="relative py-2 transition-all duration-300"
-          [ngClass]="activeSection() === item ? 'text-fuchsia-500' : 'text-gray-400 hover:text-white'">
+          [ngClass]="activeSection() === item ? 'text-fuchsia-500' : 'dark:text-gray-400 text-gray-600 dark:hover:text-white hover:text-black'">
           {{ ts.t.nav[item] }}
           <span
             class="absolute bottom-0 left-0 w-full h-0.5 bg-fuchsia-500 transition-transform duration-300 origin-left"
@@ -63,7 +63,7 @@
       @defer (on viewport) {
       <app-about></app-about>
       } @placeholder {
-      <div class="h-screen bg-black"></div>
+      <div class="h-screen dark:bg-black bg-white"></div>
       }
     </div>
 
@@ -71,7 +71,7 @@
       @defer (on viewport) {
       <app-skills></app-skills>
       } @placeholder {
-      <div class="h-96 bg-black"></div>
+      <div class="h-96 dark:bg-black bg-white"></div>
       }
     </div>
 
@@ -79,7 +79,7 @@
       @defer (on viewport) {
       <app-experience></app-experience>
       } @placeholder {
-      <div class="h-screen bg-black"></div>
+      <div class="h-screen dark:bg-black bg-white"></div>
       }
     </div>
 
@@ -87,7 +87,7 @@
       @defer (on viewport) {
       <app-projects></app-projects>
       } @placeholder {
-      <div class="h-[800px] bg-black"></div>
+      <div class="h-[800px] dark:bg-black bg-white"></div>
       }
     </div>
 
@@ -95,7 +95,7 @@
       @defer (on viewport) {
       <app-hobbies></app-hobbies>
       } @placeholder {
-      <div class="h-64 bg-black"></div>
+      <div class="h-64 dark:bg-black bg-white"></div>
       }
     </div>
 
@@ -103,7 +103,7 @@
       @defer (on viewport) {
       <app-contact></app-contact>
       } @placeholder {
-      <div class="h-96 bg-black"></div>
+      <div class="h-96 dark:bg-black bg-white"></div>
       }
     </div>
   </div>

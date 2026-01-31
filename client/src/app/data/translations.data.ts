@@ -109,43 +109,43 @@ export const TRANSLATIONS: Record<Language, any> = {
     },
     hi: {
         nav: {
-            about: "About Me",
-            experience: "Experience",
-            projects: "Projects",
-            contact: "Contact"
+            about: "मेरे बारे में",
+            experience: "अनुभव",
+            projects: "प्रोजेक्ट्स",
+            contact: "संपर्क"
         },
         hero: {
-            greeting: "Hi, I'm",
-            name: "Shilpi Lashkari",
-            role: "Full-Stack Web Developer",
-            description: "Full-Stack Web Developer with 4+ YOE building scalable, high-performance web apps.",
-            sayHi: "Say Hi!"
+            greeting: "नमस्ते, मैं हूँ",
+            name: "शिल्पी लश्करी",
+            role: "फुल-स्टैक वेब डेवलपर",
+            description: "4+ वर्षों के अनुभव के साथ स्केलेबल और उच्च-प्रदर्शन वेब ऐप्स बनाने वाले फुल-स्टैक वेब डेवलपर।",
+            sayHi: "नमस्ते कहें!"
         },
         about: {
-            title: "About Me",
-            p1: "I am a Full-Stack Web Developer with over 4 years of experience mastering the art of building scalable, high-performance web applications. My expertise spans the entire development lifecycle.",
-            p2: "I thrive on solving complex engineering challenges—whether it's optimizing database queries or integrating cutting-edge AI models."
+            title: "मेरे बारे में",
+            p1: "मैं एक <span class=\"text-highlight\">फुल-स्टैक वेब डेवलपर</span> हूँ और मुझे स्केलेबल वेब एप्लिकेशन बनाने का 4+ वर्षों का अनुभव है। मेरी विशेषज्ञता <span class=\"text-highlight\">Node.js</span> के साथ मजबूत बैकएंड और <span class=\"text-highlight\">Angular & React</span> का उपयोग करके आकर्षक फ्रंटएंड बनाने में है।",
+            p2: "मुझे जटिल चुनौतियों को हल करना पसंद है, चाहे वह डेटाबेस ऑप्टिमाइज़ेशन हो या <span class=\"text-highlight\">AI मॉडल</span> का एकीकरण।"
         },
         experience: {
-            title: "Professional Experience",
+            title: "व्यावसायिक अनुभव",
             jobs: [
                 {
-                    role: "Senior Software Engineer",
-                    company: "Infosys",
-                    period: "Mar 2022 - Present",
-                    desc: "Leading development for enterprise-scale projects like ICEGATE and Cloud Software Group. Modernized legacy systems into efficient microservices."
+                    role: "सीनियर सॉफ्टवेयर इंजीनियर",
+                    company: "इंफोसिस (Infosys)",
+                    period: "मार्च 2022 - वर्तमान",
+                    desc: "ICEGATE और Cloud Software Group जैसे बड़े स्तर के प्रोजेक्ट्स के लिए विकास का नेतृत्व कर रही हूँ। पुराने सिस्टम को आधुनिक माइक्रोसर्विसेज में बदला, जिससे डेटा दक्षता में 30% सुधार हुआ।"
                 },
                 {
-                    role: "AI Engineer - Angular Developer",
+                    role: "AI इंजीनियर - Angular डेवलपर",
                     company: "Althea.ai",
-                    period: "Mar 2021 - Feb 2022",
-                    desc: "Spearheaded the development of AI-powered dashboards and the official company website."
+                    period: "मार्च 2021 - फरवरी 2022",
+                    desc: "AI-संचालित डैशबोर्ड और कंपनी की आधिकारिक वेबसाइट का विकास किया। गतिशील वेब फॉर्म बनाकर और Python/Django API को एकीकृत करके मैन्युअल काम को 40% कम किया।"
                 },
                 {
-                    role: "Frontend Developer Internship",
+                    role: "फ्रंटएंड डेवलपर इंटर्नशिप",
                     company: "Flit Webs",
-                    period: "Dec 2019 - Apr 2020",
-                    desc: "Kickstarted my developer journey by building responsive UI components and interactive web applications."
+                    period: "दिसंबर 2019 - अप्रैल 2020",
+                    desc: "रेस्पॉन्सिव UI कंपोनेंट्स और इंटरैक्टिव वेब एप्लिकेशन बनाकर अपनी डेवलपर यात्रा शुरू की। Angular और एगिल डेवलपमेंट में बुनियादी अनुभव प्राप्त किया।"
                 }
             ]
         },

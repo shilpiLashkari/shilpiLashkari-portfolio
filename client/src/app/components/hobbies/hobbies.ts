@@ -4,12 +4,12 @@ import { TranslationService } from '../../services/translation.service';
 @Component({
   selector: 'app-hobbies',
   template: `
-    <section class="py-24 px-6 bg-gray-950 border-t border-gray-900 relative overflow-hidden group">
+    <section class="py-24 px-6 dark:bg-gray-950 bg-gray-50 border-t dark:border-gray-900 border-gray-200 relative overflow-hidden group transition-colors duration-300">
       <!-- Background Glow -->
       <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-fuchsia-500/5 rounded-full blur-[100px] pointer-events-none group-hover:bg-fuchsia-500/10 transition-colors duration-700"></div>
 
       <div class="max-w-5xl mx-auto relative z-10">
-        <h2 class="text-3xl md:text-5xl font-bold text-center text-white mb-16 tracking-tight reveal-on-scroll">
+        <h2 class="text-3xl md:text-5xl font-bold text-center dark:text-white text-gray-900 mb-16 tracking-tight reveal-on-scroll">
           {{ ts.t.hobbies.title }} <span class="text-fuchsia-500">.</span>
         </h2>
 
@@ -18,29 +18,29 @@ import { TranslationService } from '../../services/translation.service';
           <!-- Books -->
           <div class="hobby-card group/card" (mouseenter)="playSound('book')">
             <span class="text-4xl mb-4 block group-hover/card:scale-125 group-hover/card:rotate-[-10deg] transition-transform duration-300">📚</span>
-            <h3 class="text-lg font-bold text-white mb-1 group-hover/card:text-fuchsia-400 transition-colors">{{ ts.t.hobbies.cards.books.title }}</h3>
-            <p class="text-xs text-gray-500 font-mono group-hover/card:text-white transition-colors">{{ ts.t.hobbies.cards.books.subtitle }}</p>
+            <h3 class="text-lg font-bold dark:text-white text-gray-900 mb-1 group-hover/card:text-fuchsia-400 transition-colors">{{ ts.t.hobbies.cards.books.title }}</h3>
+            <p class="text-xs dark:text-gray-500 text-gray-600 font-mono dark:group-hover/card:text-white group-hover/card:text-gray-900 transition-colors">{{ ts.t.hobbies.cards.books.subtitle }}</p>
           </div>
 
           <!-- Music -->
           <div class="hobby-card group/card" (mouseenter)="playSound('music')">
             <span class="text-4xl mb-4 block group-hover/card:scale-125 group-hover/card:rotate-12 transition-transform duration-300">🎵</span>
-            <h3 class="text-lg font-bold text-white mb-1 group-hover/card:text-fuchsia-400 transition-colors">{{ ts.t.hobbies.cards.music.title }}</h3>
-            <p class="text-xs text-gray-500 font-mono group-hover/card:text-white transition-colors">{{ ts.t.hobbies.cards.music.subtitle }}</p>
+            <h3 class="text-lg font-bold dark:text-white text-gray-900 mb-1 group-hover/card:text-fuchsia-400 transition-colors">{{ ts.t.hobbies.cards.music.title }}</h3>
+            <p class="text-xs dark:text-gray-500 text-gray-600 font-mono dark:group-hover/card:text-white group-hover/card:text-gray-900 transition-colors">{{ ts.t.hobbies.cards.music.subtitle }}</p>
           </div>
 
           <!-- Gaming -->
           <div class="hobby-card group/card" (mouseenter)="playSound('game')">
             <span class="text-4xl mb-4 block group-hover/card:scale-125 group-hover/card:-translate-y-2 transition-transform duration-300">🎮</span>
-            <h3 class="text-lg font-bold text-white mb-1 group-hover/card:text-fuchsia-400 transition-colors">{{ ts.t.hobbies.cards.games.title }}</h3>
-            <p class="text-xs text-gray-500 font-mono group-hover/card:text-white transition-colors">{{ ts.t.hobbies.cards.games.subtitle }}</p>
+            <h3 class="text-lg font-bold dark:text-white text-gray-900 mb-1 group-hover/card:text-fuchsia-400 transition-colors">{{ ts.t.hobbies.cards.games.title }}</h3>
+            <p class="text-xs dark:text-gray-500 text-gray-600 font-mono dark:group-hover/card:text-white group-hover/card:text-gray-900 transition-colors">{{ ts.t.hobbies.cards.games.subtitle }}</p>
           </div>
 
           <!-- Tech -->
           <div class="hobby-card group/card" (mouseenter)="playSound('tech')">
             <span class="text-4xl mb-4 block group-hover/card:scale-125 group-hover/card:rotate-[360deg] transition-transform duration-500">🚀</span>
-            <h3 class="text-lg font-bold text-white mb-1 group-hover/card:text-fuchsia-400 transition-colors">{{ ts.t.hobbies.cards.tech.title }}</h3>
-            <p class="text-xs text-gray-500 font-mono group-hover/card:text-white transition-colors">{{ ts.t.hobbies.cards.tech.subtitle }}</p>
+            <h3 class="text-lg font-bold dark:text-white text-gray-900 mb-1 group-hover/card:text-fuchsia-400 transition-colors">{{ ts.t.hobbies.cards.tech.title }}</h3>
+            <p class="text-xs dark:text-gray-500 text-gray-600 font-mono dark:group-hover/card:text-white group-hover/card:text-gray-900 transition-colors">{{ ts.t.hobbies.cards.tech.subtitle }}</p>
           </div>
 
         </div>
@@ -49,7 +49,7 @@ import { TranslationService } from '../../services/translation.service';
   `,
   styles: [`
     .hobby-card {
-      @apply bg-gray-900/50 backdrop-blur-sm border border-gray-800 rounded-3xl p-8 flex flex-col items-center justify-center text-center transition-all duration-300 hover:-translate-y-2 hover:border-fuchsia-500/50 hover:bg-gray-900 hover:shadow-[0_0_40px_rgba(217,70,239,0.15)] cursor-pointer;
+      @apply dark:bg-gray-900/50 bg-white backdrop-blur-sm border dark:border-gray-800 border-gray-200 rounded-3xl p-8 flex flex-col items-center justify-center text-center transition-all duration-300 hover:-translate-y-2 hover:border-fuchsia-500/50 dark:hover:bg-gray-900 hover:bg-gray-50 hover:shadow-[0_0_40px_rgba(217,70,239,0.15)] cursor-pointer shadow-sm;
     }
   `],
   standalone: true
