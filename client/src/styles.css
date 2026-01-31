@@ -1,0 +1,167 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom Scrollbar for "Enjoyable Scrolling" */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #000;
+}
+::-webkit-scrollbar-thumb {
+  background: #333;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #d946ef; /* Fuchsia-500 */
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  overflow-x: hidden;
+  background-color: #000;
+  color: white;
+}
+
+/* Global Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translate3d(0, 40px, 0);
+    }
+    to {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+.animate-fade-in-up {
+    animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Utility for glass effects */
+.glass {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Scroll Reveal Class (Targeted by IntersectionObserver or just default animation for now) */
+.reveal-on-scroll {
+    opacity: 0;
+    transition: all 1s ease-out;
+    transform: translateY(30px);
+}
+
+
+.reveal-on-scroll.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+/* 2026 Theme Animations */
+
+.writing-vertical {
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+}
+
+.cursor-blink {
+    animation: blink 1.2s infinite;
+}
+
+.text-gradient {
+    background: linear-gradient(to right, #ffffff, #e879f9);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: white; /* Fallback */
+}
+
+/* Utilities */
+.delay-200 { animation-delay: 0.2s; }
+.delay-400 { animation-delay: 0.4s; }
+.delay-600 { animation-delay: 0.6s; }
+.delay-800 { animation-delay: 0.8s; }
+.delay-1000 { animation-delay: 1s; }
+
+/* Keyframes */
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+@keyframes slide-up {
+    0% { transform: translateY(50px); opacity: 0; }
+    100% { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes fade-in {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+/* Animation Classes */
+.animate-slide-up {
+    animation: slide-up 1s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.animate-fade-in {
+    animation: fade-in 1.5s ease-out both;
+}
+
+.animate-pulse-slow {
+    animation: pulse 8s ease-in-out infinite;
+}
+
+.animate-fade-in-up {
+    animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.fill-mode-forwards {
+    animation-fill-mode: both; 
+}
+
+/* Custom Highlight */
+.text-highlight {
+    background-color: rgba(232, 121, 249, 0.9); /* Slightly transparent */
+    color: white;
+    padding: 2px 6px;
+    border-radius: 6px;
+    font-weight: 700;
+    font-size: 1.1em; /* Make it slightly bigger */
+    box-shadow: 0 2px 10px rgba(232, 121, 249, 0.3); /* Add glow */
+    vertical-align: middle;
+}
+
+/* Ripple Animation */
+@keyframes ripple {
+    0% {
+        transform: scale(1);
+        opacity: 0.8;
+        border-width: 1px;
+    }
+    100% {
+        transform: scale(2.5);
+        opacity: 0;
+        border-width: 0px;
+    }
+}
+
+.animate-ripple {
+    animation: ripple 2s infinite ease-out;
+}
+
+
