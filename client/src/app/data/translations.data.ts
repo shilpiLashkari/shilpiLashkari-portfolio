@@ -96,7 +96,7 @@ export const TRANSLATIONS: Record<Language, any> = {
             status: "Online",
             placeholder: "Ask about my experience...",
             thinking: "Thinking...",
-            greeting: "Hi! I'm the AI Assistant. Ask me anything about my developer's experience, tech stack, or projects.",
+            greeting: "Hi! I'm Shilpi's personal assistant. I'm here to share details about her developer journey, tech stack, and projects. What would you like to know?",
             responses: {
                 stack: "I specialize in the MEAN stack (MongoDB, Express, Angular, Node.js). I'm also proficient with TypeScript, Tailwind CSS, and integrating AI models using OpenAI.",
                 experience: "I have 4 years of experience building scalable web applications. Currently, I'm a Senior Engineer focusing on backend migration and AI integration.",
@@ -105,6 +105,10 @@ export const TRANSLATIONS: Record<Language, any> = {
                 ai: "I use AI to accelerate development—from generating boilerplate code to debugging race conditions. Better tools mean better software.",
                 fallback: "That's a great question! I'm best equipped to answer about my technical skills, experience, and projects. Feel free to ask about those!"
             }
+        },
+        terminal: {
+            title: "My Opinion on AI",
+            content: "\"As a developer, I see AI not as a replacement, but as a <span class=\"text-highlight\">powerful amplifier</span> of human creativity. It handles the repetitive, allowing us to focus on architecture, empathy, and innovation.\"\n\"The future isn't about choosing between human or machine—it's about <span class=\"text-highlight\">collaborative intelligence</span>. Human ingenuity guiding machine precision to build things we couldn't dream of before.\""
         }
     },
     hi: {
@@ -150,67 +154,71 @@ export const TRANSLATIONS: Record<Language, any> = {
             ]
         },
         projects: {
-            title: "Selected Works",
-            viewCaseStudy: "View Project",
-            challenge: "Challenge",
-            solution: "Solution",
-            outcome: "Outcome",
-            future: "Key Tech",
+            title: "चयनित कार्य",
+            viewCaseStudy: "प्रोजेक्ट देखें",
+            challenge: "चुनौती",
+            solution: "समाधान",
+            outcome: "परिणाम",
+            future: "मुख्य तकनीक",
             list: [
                 {
-                    name: "ICEGATE E-Governance Portal",
-                    summary: "Scalable trade operations portal for Indian Customs.",
-                    problem: "Modernizing legacy trade systems.",
-                    solution: "Designed responsive Angular 17 components integrated with Spring Boot APIs.",
-                    outcome: "Improved data efficiency by 30%.",
+                    name: "ICEGATE ई-गवर्नेंस पोर्टल",
+                    summary: "भारतीय सीमा शुल्क के लिए स्केलेबल व्यापार संचालन पोर्टल।",
+                    problem: "उच्च प्रदर्शन और सुरक्षा के लिए पुराने व्यापार प्रणालियों का आधुनिकीकरण।",
+                    solution: "Spring Boot API के साथ एकीकृत उत्तरदायी Angular 17 घटकों को डिज़ाइन किया। सुरक्षित डेटा हैंडलिंग लागू की गई।",
+                    outcome: "डेटा दक्षता में 30% सुधार हुआ और पहुंच में वृद्धि हुई।",
                     future: "Angular 17 • Spring Boot"
                 },
                 {
-                    name: "CSG Modernization",
-                    summary: "Enterprise-grade cloud application transformation.",
-                    problem: "Performance bottlenecks in legacy systems.",
-                    solution: "Engineered microservices and optimized MySQL DBs.",
-                    outcome: "Deployment speed improved by 45%.",
-                    future: "Angular • Node.js"
+                    name: "Cloud Software Group आधुनिकीकरण",
+                    summary: "एंटरप्राइज-ग्रेड क्लाउड एप्लिकेशन परिवर्तन।",
+                    problem: "पुरानी प्रणालियों में प्रदर्शन बाधाएँ और क्लाउड स्केलेबिलिटी की कमी थी।",
+                    solution: "माइक्रोसर्विसेज का निर्माण किया और MySQL DB को अनुकूलित किया। स्वचालित CI/CD पाइपलाइन्स।",
+                    outcome: "तैनाती की गति में 45% सुधार हुआ।",
+                    future: "Angular • Node.js • AWS"
                 },
                 {
-                    name: "Althea.ai Platform",
-                    summary: "AI-powered internal dashboard.",
-                    problem: "Manual data workflows.",
-                    solution: "Built dynamic web forms and dashboards.",
-                    outcome: "Reduced manual processes by 40%.",
-                    future: "Angular • Django"
+                    name: "Althea.ai इंटेलिजेंस प्लेटफॉर्म",
+                    summary: "AI-संचालित आंतरिक डैशबोर्ड और आधिकारिक वेबसाइट।",
+                    problem: "मैन्युअल डेटा वर्कफ़्लो ने संचालन को धीमा कर दिया।",
+                    solution: "Angular और Python/Django API का उपयोग करके गतिशील वेब फॉर्म और डैशबोर्ड बनाए।",
+                    outcome: "मैन्युअल डेटा प्रक्रियाओं को 40% कम किया।",
+                    future: "Angular • Django • AI"
                 }
             ]
         },
         contact: {
-            title: "Get In Touch",
-            desc: "Open to Full-Stack Developer, Software Engineer, & Frontend / Backend Engineer roles.",
-            btn: "Say Hello"
+            title: "संपर्क में रहें",
+            desc: "फुल-स्टैक डेवलपर, सॉफ्टवेयर इंजीनियर और फ्रंटएंड / बैकएंड इंजीनियर भूमिकाओं के लिए उपलब्ध। मेरा इनबॉक्स हमेशा खुला है!",
+            btn: "नमस्ते कहें"
         },
         hobbies: {
-            title: "More Than Just Code",
+            title: "कोडिंग से परे",
             cards: {
-                books: { title: "Books", subtitle: "Continuous Learner" },
-                music: { title: "Music", subtitle: "Creative Flow" },
-                games: { title: "Gaming", subtitle: "Strategic Thinking" },
-                tech: { title: "Forever Curious", subtitle: "Always Exploring Tech" }
+                books: { title: "किताबें", subtitle: "सतत शिक्षार्थी" },
+                music: { title: "संगीत", subtitle: "रचनात्मक प्रवाह" },
+                games: { title: "गेमिंग", subtitle: "रणनीतिक सोच" },
+                tech: { title: "हमेशा जिज्ञासु", subtitle: "तकनीक की खोज" }
             }
         },
         chat: {
-            title: "Shilpi's Assistant",
-            status: "Online",
-            placeholder: "Ask about my experience...",
-            thinking: "Thinking...",
-            greeting: "Hi! I'm the AI Assistant. Ask me anything about my developer's experience, tech stack, or projects.",
+            title: "शिल्पी की सहायक",
+            status: "ऑनलाइन",
+            placeholder: "मेरे अनुभव के बारे में पूछें...",
+            thinking: "सोच रही हूँ...",
+            greeting: "नमस्ते! मैं शिल्पी की व्यक्तिगत सहायक हूँ। मैं यहाँ उनके डेवलपर सफर, तकनीक और प्रोजेक्ट्स के बारे में जानकारी देने के लिए हूँ। आप क्या जानना चाहेंगे?",
             responses: {
-                stack: "I specialize in the MEAN stack (MongoDB, Express, Angular, Node.js). I'm also proficient with TypeScript, Tailwind CSS, and integrating AI models using OpenAI.",
-                experience: "I have 4 years of experience building scalable web applications. Currently, I'm a Senior Engineer focusing on backend migration and AI integration.",
-                project: "One of my key projects is an E-Commerce Logistics Engine where I optimized MongoDB queries to handle Black Friday traffic with 99.9% uptime.",
-                contact: "You can reach me at shilpilashkari@gmail.com or find me on LinkedIn!",
-                ai: "I use AI to accelerate development—from generating boilerplate code to debugging race conditions. Better tools mean better software.",
-                fallback: "That's a great question! I'm best equipped to answer about my technical skills, experience, and projects. Feel free to ask about those!"
+                stack: "मैं MEAN स्टैक (MongoDB, Express, Angular, Node.js) में विशेषज्ञ हूँ। मुझे TypeScript, Tailwind CSS और OpenAI का उपयोग करके AI मॉडल को एकीकृत करने में भी महारत हासिल है।",
+                experience: "मेरे पास स्केलेबल वेब एप्लिकेशन बनाने का 4 साल का अनुभव है। वर्तमान में, मैं एक सीनियर इंजीनियर हूँ जो बैकएंड माइग्रेशन और AI इंटीग्रेशन पर ध्यान केंद्रित कर रही हूँ।",
+                project: "मेरा एक प्रमुख प्रोजेक्ट ई-कॉमर्स लॉजिस्टिक्स इंजन है जहाँ मैंने ब्लैक फ्राइडे ट्रैफ़िक को 99.9% अपटाइम के साथ संभालने के लिए MongoDB क्वेरीज़ को अनुकूलित किया।",
+                contact: "आप मुझसे shilpilashkari@gmail.com पर संपर्क कर सकते हैं या लिंक्डइन पर मुझे पा सकते हैं!",
+                ai: "मैं विकास को तेज करने के लिए AI का उपयोग करती हूँ—बॉयलरप्लेट कोड बनाने से लेकर रेस कंडीशन को डिबग करने तक। बेहतर उपकरण मतलब बेहतर सॉफ्टवेयर।",
+                fallback: "यह एक अच्छा सवाल है! मैं अपनी तकनीकी कौशल, अनुभव और प्रोजेक्ट्स के बारे में जवाब देने के लिए सबसे उपयुक्त हूँ। बेझिझक उनके बारे में पूछें!"
             }
+        },
+        terminal: {
+            title: "AI पर मेरी राय",
+            content: "\"एक डेवलपर के रूप में, मैं AI को एक प्रतिस्थापन के रूप में नहीं, बल्कि मानव रचनात्मकता के एक <span class=\"text-highlight\">शक्तिशाली एम्पलीफायर</span> के रूप में देखता हूँ। यह दोहराव वाले कार्यों को संभालता है, जिससे हम वास्तुकला, सहानुभूति और नवाचार पर ध्यान केंद्रित कर सकते हैं।\"\n\"भविष्य मानव या मशीन के बीच चयन करने के बारे में नहीं है—यह <span class=\"text-highlight\">सहयोगात्मक बुद्धिमत्ता</span> के बारे में है। मानव सरलता मशीन की सटीकता का मार्गदर्शन करती है ताकि हम उन चीजों का निर्माण कर सकें जिनका हमने पहले सपना भी नहीं देखा था।\""
         }
     }
 };

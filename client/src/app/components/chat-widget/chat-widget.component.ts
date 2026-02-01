@@ -12,8 +12,170 @@ interface Message {
   selector: 'app-chat-widget',
   standalone: true,
   imports: [CommonModule, FormsModule],
-  templateUrl: './chat-widget.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  template: `
+    <div class="fixed bottom-6 right-6 z-50 flex flex-col items-end">
+    <!-- Chat Window -->
+    <div *ngIf="isOpen()"
+        class="bg-gray-950/80 backdrop-blur-xl border border-white/10 rounded-3xl shadow-[0_20px_50px_rgba(0,0,0,0.5)] w-85 sm:w-96 overflow-hidden mb-6 transform transition-all duration-500 origin-bottom-right scale-100 opacity-100 animate-fade-in-up">
+
+        <!-- Header -->
+        <div class="bg-white/5 p-5 flex justify-between items-center border-b border-white/10">
+            <div class="flex items-center gap-4">
+                <div class="relative">
+                    <div
+                        class="w-12 h-12 rounded-2xl bg-gradient-to-tr from-fuchsia-600 to-purple-600 flex items-center justify-center text-2xl shadow-lg ring-1 ring-white/20">
+                        <!-- Female Bot Icon -->
+                        <svg class="w-7 h-7 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="1.5">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M12 2a8 8 0 0 1 8 8v3a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4v-3a8 8 0 0 1 8-8z" />
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M9 11h.01M15 11h.01" />
+                            <!-- Eyes -->
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M10 15a2 2 0 0 0 4 0" />
+                            <!-- Smile -->
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M2 10l2 2M22 10l-2 2" />
+                            <!-- Antennas/Ears -->
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 2v-2" /> <!-- Antenna top -->
+                        </svg>
+                    </div>
+                    <span
+                        class="absolute -bottom-1 -right-1 w-3.5 h-3.5 bg-green-500 border-2 border-gray-950 rounded-full animate-pulse"></span>
+                </div>
+                <div>
+                    <h3 class="font-bold text-base text-white leading-tight tracking-wide">{{ ts.t.chat.title }}</h3>
+                    <p class="text-[10px] text-fuchsia-300 font-mono tracking-wider mt-0.5 uppercase">
+                        Online & Ready
+                    </p>
+                </div>
+            </div>
+            <button (click)="toggleChat()"
+                class="p-2 rounded-xl border border-white/10 text-gray-400 hover:text-white hover:bg-white/10 transition-all">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd"
+                        d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                        clip-rule="evenodd" />
+                </svg>
+            </button>
+        </div>
+
+        <!-- Messages Area -->
+        <div #scrollContainer
+            class="h-[400px] overflow-y-auto p-6 space-y-6 custom-scrollbar bg-gradient-to-b from-transparent to-black/20">
+            <div *ngFor="let msg of messages()"
+                [ngClass]="{'items-end': msg.sender === 'user', 'items-start': msg.sender === 'ai'}"
+                class="flex flex-col group">
+
+                <div *ngIf="msg.sender === 'ai'"
+                    class="text-[10px] text-gray-500 mb-1 ml-1 uppercase bg-gray-900/50 px-2 py-0.5 rounded-full w-fit border border-gray-800">
+                    {{ ts.t.chat.title }}
+                </div>
+
+                <div [ngClass]="{'bg-gradient-to-tr from-fuchsia-600 to-purple-600 text-white rounded-br-none': msg.sender === 'user', 'bg-white/5 backdrop-blur-md text-gray-200 border border-white/10 rounded-bl-none': msg.sender === 'ai'}"
+                    class="max-w-[85%] px-5 py-3 rounded-2xl text-sm shadow-lg leading-relaxed transition-transform hover:scale-[1.02] duration-300">
+                    {{ msg.text }}
+                </div>
+            </div>
+
+            <div *ngIf="isTyping()"
+                class="flex items-center gap-2 text-fuchsia-400/60 text-xs ml-2 font-mono italic animate-pulse">
+                <span class="w-1.5 h-1.5 bg-fuchsia-500 rounded-full"></span>
+                Computing response...
+            </div>
+        </div>
+
+        <!-- Input Area -->
+        <div class="p-4 bg-black/40 border-t border-white/10 backdrop-blur-md">
+            <div
+                class="flex gap-3 bg-white/5 border border-white/10 rounded-2xl p-1.5 focus-within:border-fuchsia-500/50 transition-all shadow-inner group">
+                <input [ngModel]="userInput()" (ngModelChange)="userInput.set($event)" (keyup.enter)="sendMessage()"
+                    type="text" [placeholder]="ts.t.chat.placeholder"
+                    class="flex-1 bg-transparent text-white px-4 py-2.5 text-sm focus:outline-none placeholder-gray-500 group-focus-within:placeholder-gray-400">
+                <button (click)="sendMessage()" [disabled]="!userInput().trim()"
+                    class="bg-fuchsia-600 hover:bg-fuchsia-500 text-white p-2.5 rounded-xl transition-all disabled:opacity-30 disabled:grayscale shadow-lg shadow-fuchsia-900/20 active:scale-95">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 transform -rotate-45" viewBox="0 0 20 20"
+                        fill="currentColor">
+                        <path
+                            d="M10.894 2.553a1 1 0 00-1.788 0l-7 14a1 1 0 001.169 1.409l5-1.429A1 1 0 009 15.571V11a1 1 0 112 0v4.571a1 1 0 00.725.962l5 1.428a1 1 0 001.17-1.408l-7-14z" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toggle Button -->
+    <button *ngIf="!isOpen()" (click)="toggleChat()"
+        class="w-16 h-16 bg-black rounded-[2rem] flex items-center justify-center shadow-[0_0_40px_rgba(217,70,239,0.3)] transition-all hover:scale-110 active:scale-95 group relative z-50 border border-fuchsia-500/50 animate-bounce-slow">
+
+        <!-- Ripple Effects -->
+        <span
+            class="absolute inset-0 rounded-[2rem] border border-fuchsia-500 opacity-0 animate-ripple pointer-events-none"></span>
+        <span
+            class="absolute inset-0 rounded-[2rem] border border-fuchsia-500 opacity-0 animate-ripple delay-1000 pointer-events-none"></span>
+
+        <!-- Animated border effect -->
+        <div
+            class="absolute inset-0 bg-[conic-gradient(from_90deg,transparent_0_360deg)] group-hover:bg-[conic-gradient(from_90deg,#d946ef_0,#000000_50%,#d946ef_100%)] animate-spin-slow opacity-50 rounded-[2rem] overflow-hidden">
+        </div>
+        <div class="absolute inset-[2px] bg-black rounded-[1.9rem]"></div>
+
+        <!-- Icon -->
+        <div class="relative z-10 text-fuchsia-500 group-hover:text-white transition-colors duration-300">
+            <svg class="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                    d="M12 2a8 8 0 0 1 8 8v3a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4v-3a8 8 0 0 1 8-8z" />
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 11h.01M15 11h.01" />
+                <path stroke-linecap="round" stroke-linejoin="round" d="M10 15a2 2 0 0 0 4 0" />
+                <path stroke-linecap="round" stroke-linejoin="round" d="M2 10l2 2M22 10l-2 2" />
+            </svg>
+        </div>
+
+        <!-- Tooltip -->
+        <span
+            class="absolute right-full mr-6 bg-gray-900/90 backdrop-blur-md text-white px-5 py-3 rounded-2xl text-sm font-bold opacity-0 group-hover:opacity-100 transition-all translate-x-4 group-hover:translate-x-0 whitespace-nowrap border border-white/10 shadow-2xl">
+            <span class="text-fuchsia-400">AI</span> Assistant
+        </span>
+    </button>
+</div>
+
+<style>
+    .animate-bounce-slow {
+        animation: float 6s ease-in-out infinite;
+    }
+
+    .animate-spin-slow {
+        animation: spin 3s linear infinite;
+    }
+
+    @keyframes float {
+
+        0%,
+        100% {
+            transform: translateY(0);
+        }
+
+        50% {
+            transform: translateY(-10px);
+        }
+    }
+</style>
+
+<style>
+    /* Custom Scrollbar scoped to component */
+    .custom-scrollbar::-webkit-scrollbar {
+        width: 5px;
+    }
+
+    .custom-scrollbar::-webkit-scrollbar-track {
+        background: transparent;
+    }
+
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+        background: #1f2937;
+        border-radius: 10px;
+    }
+</style>
+  `,
   styles: []
 })
 export class ChatWidgetComponent implements AfterViewChecked {

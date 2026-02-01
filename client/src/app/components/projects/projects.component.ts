@@ -12,9 +12,200 @@ import { Project, PROJECTS } from '../../data/projects.data';
   selector: 'app-projects',
   standalone: true,
   imports: [CommonModule, NgOptimizedImage],
-  templateUrl: './projects.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  styles: []
+  template: `
+    <section id="projects" class="py-24 px-6 dark:bg-black bg-gray-50 relative transition-colors duration-300">
+    <div class="max-w-7xl mx-auto">
+        <h2 class="text-3xl md:text-5xl font-bold mb-16 text-center dark:text-white text-gray-900 reveal-on-scroll">
+            {{ ts.t.projects.title }}
+        </h2>
+
+        <!-- Horizontal Carousel -->
+        <div class="flex overflow-x-auto gap-8 pb-12 snap-x hide-scrollbar reveal-on-scroll">
+            <div *ngFor="let project of projects; let i = index; trackBy: trackByIndex" (click)="toggleProject(i)"
+                class="min-w-[300px] md:min-w-[450px] snap-center dark:bg-gray-900/50 bg-white border-2 dark:border-gray-800 border-gray-300 rounded-3xl p-8 hover:border-fuchsia-500/50 transition-all cursor-pointer group relative overflow-hidden shadow-xl hover:shadow-2xl">
+
+                <div class="absolute inset-0 z-0">
+                    <img *ngIf="project.videoUrl" [src]="project.videoUrl" alt="Preview"
+                        class="w-full h-full object-cover opacity-0 group-hover:opacity-40 transition-opacity duration-500">
+                    <div
+                        class="absolute inset-0 dark:bg-gradient-to-t dark:from-gray-900 dark:via-gray-900/80 dark:to-transparent bg-gradient-to-t from-gray-100 via-gray-50/80 to-transparent">
+                    </div>
+                </div>
+
+                <div
+                    class="absolute inset-0 dark:bg-gradient-to-br dark:from-fuchsia-500/10 dark:to-transparent bg-gradient-to-br from-fuchsia-500/5 to-fuchsia-500/0 opacity-0 group-hover:opacity-100 transition-opacity z-10">
+                </div>
+
+                <div class="relative z-10">
+                    <span class="text-xs font-mono text-fuchsia-400 uppercase tracking-widest">{{ project.type }}</span>
+                    <h3
+                        class="text-2xl font-bold dark:text-white text-gray-900 mt-4 mb-4 group-hover:text-fuchsia-400 transition-colors">
+                        {{ ts.t.projects.list[i]?.name || project.name }}
+                    </h3>
+                    <p class="dark:text-gray-400 text-gray-600 leading-relaxed line-clamp-3">
+                        {{ ts.t.projects.list[i]?.summary || project.summary }}
+                    </p>
+
+                    <div
+                        class="mt-8 flex items-center text-fuchsia-400 font-mono text-sm group-hover:gap-2 transition-all">
+                        <span>{{ ts.t.projects.viewCaseStudy }}</span>
+                        <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Project Detail Modal -->
+        <div *ngIf="isAnyProjectOpen()" class="fixed inset-0 z-[9999] overflow-y-auto">
+
+            <!-- Backdrop -->
+            <div class="fixed inset-0 bg-black/95 backdrop-blur-xl" (click)="closeAll()"></div>
+
+            <!-- Modal Container -->
+            <div class="relative z-[10000] min-h-screen flex items-center justify-center p-4">
+
+                <!-- Modal Content -->
+                <div
+                    class="relative w-full max-w-5xl dark:bg-gray-950 bg-white border dark:border-gray-800 border-gray-200 rounded-[2.5rem] shadow-2xl my-8">
+
+                    <div class="overflow-y-auto w-full custom-scrollbar max-h-[90vh]">
+                        <div *ngFor="let project of projects; let i = index">
+                            <div *ngIf="project.isOpen" class="p-8 md:p-12">
+
+                                <div class="flex justify-between items-start mb-12">
+                                    <div>
+                                        <span class="text-fuchsia-400 font-mono text-sm uppercase tracking-[0.2em]">{{
+                                            project.type }}</span>
+                                        <h2 class="text-4xl md:text-5xl font-bold dark:text-white text-gray-900 mt-4">{{
+                                            ts.t.projects.list[i]?.name || project.name }}</h2>
+                                    </div>
+                                    <button (click)="closeAll()"
+                                        class="p-4 rounded-2xl dark:bg-gray-900 bg-gray-100 border dark:border-gray-800 border-gray-300 dark:text-gray-400 text-gray-600 dark:hover:text-white hover:text-gray-900 transition-colors">
+                                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M6 18L18 6M6 6l12 12" />
+                                        </svg>
+                                    </button>
+                                </div>
+
+                                <!-- Image Carousel -->
+                                <div
+                                    class="relative aspect-video rounded-3xl overflow-hidden mb-16 dark:bg-gray-900 bg-gray-200 group/carousel border dark:border-gray-800 border-gray-300">
+                                    <img [ngSrc]="project.images[project.currentImgIndex]" fill
+                                        class="w-full h-full object-cover transition-transform duration-700"
+                                        alt="Project screenshot">
+
+                                    <button (click)="prevImage(i, $event)"
+                                        class="absolute left-6 top-1/2 -translate-y-1/2 p-4 rounded-2xl bg-black/50 backdrop-blur-md border border-white/10 text-white opacity-0 group-hover/carousel:opacity-100 transition-opacity">
+                                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M15 19l-7-7 7-7" />
+                                        </svg>
+                                    </button>
+
+                                    <button (click)="nextImage(i, $event)"
+                                        class="absolute right-6 top-1/2 -translate-y-1/2 p-4 rounded-2xl bg-black/50 backdrop-blur-md border border-white/10 text-white opacity-0 group-hover/carousel:opacity-100 transition-opacity">
+                                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M9 5l7 7-7 7" />
+                                        </svg>
+                                    </button>
+
+                                    <div class="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2">
+                                        <div *ngFor="let img of project.images; let imgIdx = index"
+                                            class="w-8 h-1 rounded-full transition-colors"
+                                            [class.bg-fuchsia-500]="imgIdx === project.currentImgIndex"
+                                            [class.bg-white/20]="imgIdx !== project.currentImgIndex"></div>
+                                    </div>
+                                </div>
+
+                                <div class="grid md:grid-cols-2 gap-16">
+                                    <div class="space-y-10">
+                                        <div
+                                            class="p-8 dark:bg-gray-900/30 bg-gray-50 rounded-3xl border dark:border-gray-800 border-gray-200">
+                                            <h4
+                                                class="text-fuchsia-400 font-mono text-sm uppercase tracking-widest mb-4">
+                                                {{
+                                                ts.t.projects.challenge }}</h4>
+                                            <p class="dark:text-gray-300 text-gray-700 leading-relaxed text-lg">{{
+                                                ts.t.projects.list[i]?.problem || project.problem }}</p>
+                                        </div>
+                                        <div
+                                            class="p-8 dark:bg-gray-900/30 bg-gray-50 rounded-3xl border dark:border-gray-800 border-gray-200">
+                                            <h4
+                                                class="text-fuchsia-400 font-mono text-sm uppercase tracking-widest mb-4">
+                                                {{
+                                                ts.t.projects.solution }}</h4>
+                                            <p class="dark:text-gray-300 text-gray-700 leading-relaxed text-lg">{{
+                                                ts.t.projects.list[i]?.solution || project.solution }}</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="space-y-10">
+                                        <div
+                                            class="p-8 dark:bg-gray-900/30 bg-gray-50 rounded-3xl border dark:border-gray-800 border-gray-200">
+                                            <h4
+                                                class="text-fuchsia-400 font-mono text-sm uppercase tracking-widest mb-6">
+                                                Technologies</h4>
+                                            <div class="flex flex-wrap gap-2">
+                                                <span *ngFor="let t of project.tech.be"
+                                                    class="px-3 py-1 bg-fuchsia-500/10 border border-fuchsia-500/20 text-fuchsia-400 text-xs font-mono rounded-full">{{
+                                                    t }}</span>
+                                                <span *ngFor="let t of project.tech.db"
+                                                    class="px-3 py-1 dark:bg-white/5 bg-gray-200 border dark:border-white/10 border-gray-300 dark:text-gray-300 text-gray-700 text-xs font-mono rounded-full">{{
+                                                    t }}</span>
+                                            </div>
+                                        </div>
+                                        <div
+                                            class="p-8 dark:bg-fuchsia-500/5 bg-fuchsia-50 rounded-3xl border dark:border-fuchsia-500/10 border-fuchsia-200">
+                                            <h4
+                                                class="text-fuchsia-400 font-mono text-sm uppercase tracking-widest mb-4">
+                                                {{
+                                                ts.t.projects.outcome }}</h4>
+                                            <p
+                                                class="dark:text-white text-gray-900 leading-relaxed font-semibold text-xl italic">
+                                                "{{
+                                                ts.t.projects.list[i]?.outcome || project.outcome }}"</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    </section>
+  `,
+  styles: [`
+    .hide-scrollbar::-webkit-scrollbar {
+        display: none;
+    }
+
+    .hide-scrollbar {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+
+    .custom-scrollbar::-webkit-scrollbar {
+        width: 6px;
+    }
+
+    .custom-scrollbar::-webkit-scrollbar-track {
+        background: transparent;
+    }
+
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+        background: #1f2937;
+        border-radius: 10px;
+    }
+  `]
 })
 export class ProjectsComponent {
   ts = inject(TranslationService);
