@@ -12,12 +12,12 @@ export const TRANSLATIONS: Record<Language, any> = {
             greeting: "Hi, I'm",
             name: "Shilpi Lashkari",
             role: "Full-Stack Web Developer",
-            description: "Full-Stack Web Developer with 4+ YOE building scalable, high-performance web apps.",
+            description: "Building scalable, high-performance web applications with 4+ years of expertise in the tech industry.",
             sayHi: "Say Hi!"
         },
         about: {
             title: "About Me",
-            p1: "I am a <span class=\"text-highlight\">Full-Stack Web Developer</span> with 4+ years of experience. I specialize in building robust backends with <span class=\"text-highlight\">Node.js</span> and pixel-perfect frontends using <span class=\"text-highlight\">Angular & React</span>.",
+            p1: "I specialize in architecting robust backends with <span class=\"text-highlight\">Node.js</span> and crafting pixel-perfect frontends using <span class=\"text-highlight\">Angular & React</span>. With over 4 years of experience, I bridge the gap between complex logic and elegant user interfaces.",
             p2: "I thrive on solving complex challenges, from database optimization to integrating <span class=\"text-highlight\">AI models</span>."
         },
         experience: {
@@ -122,12 +122,12 @@ export const TRANSLATIONS: Record<Language, any> = {
             greeting: "नमस्ते, मैं हूँ",
             name: "शिल्पी लश्करी",
             role: "फुल-स्टैक वेब डेवलपर",
-            description: "4+ वर्षों के अनुभव के साथ स्केलेबल और उच्च-प्रदर्शन वेब ऐप्स बनाने वाले फुल-स्टैक वेब डेवलपर।",
+            description: "4+ वर्षों के अनुभव के साथ स्केलेबल और उच्च-प्रदर्शन वेब एप्लिकेशन बनाने में माहिर।",
             sayHi: "नमस्ते कहें!"
         },
         about: {
             title: "मेरे बारे में",
-            p1: "मैं एक <span class=\"text-highlight\">फुल-स्टैक वेब डेवलपर</span> हूँ और मुझे स्केलेबल वेब एप्लिकेशन बनाने का 4+ वर्षों का अनुभव है। मेरी विशेषज्ञता <span class=\"text-highlight\">Node.js</span> के साथ मजबूत बैकएंड और <span class=\"text-highlight\">Angular & React</span> का उपयोग करके आकर्षक फ्रंटएंड बनाने में है।",
+            p1: "मैं <span class=\"text-highlight\">Node.js</span> के साथ मजबूत बैकएंड और <span class=\"text-highlight\">Angular & React</span> का उपयोग करके आकर्षक फ्रंटएंड बनाने में विशेषज्ञ हूँ। 4 से अधिक वर्षों के अनुभव के साथ, मैं जटिल तर्क और बेहतरीन यूजर इंटरफेस के बीच की खाई को पाटती हूँ।",
             p2: "मुझे जटिल चुनौतियों को हल करना पसंद है, चाहे वह डेटाबेस ऑप्टिमाइज़ेशन हो या <span class=\"text-highlight\">AI मॉडल</span> का एकीकरण।"
         },
         experience: {
