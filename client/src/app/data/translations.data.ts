@@ -27,19 +27,19 @@ export const TRANSLATIONS: Record<Language, any> = {
                     role: "Senior Software Engineer",
                     company: "Infosys",
                     period: "Mar 2022 - Present",
-                    desc: "Leading development for enterprise-scale projects like ICEGATE and Cloud Software Group. modernized legacy systems into efficient microservices, contributing to a 30% improvement in data efficiency and 45% faster deployment cycles through automated CI/CD pipelines."
+                    desc: "Architecting India’s e-governance modernization (ICEGATE) and enterprise cloud solutions using Angular 17, Spring Boot, and Node.js. Successfully migrated legacy ASP.NET systems to efficient microservices, boosting data efficiency by 30% and deployment speeds by 45%. Championed DevOps best practices with Azure and Jenkins, ensuring secure, high-performance delivery across agile cycles."
                 },
                 {
                     role: "AI Engineer - Angular Developer",
                     company: "Althea.ai",
                     period: "Mar 2021 - Feb 2022",
-                    desc: "Spearheaded the development of AI-powered dashboards and the official company website. Reduced manual operational workflows by 40% by engineering dynamic web forms and integrating Python/Django-based RESTful APIs."
+                    desc: "Evolved from Frontend to Full-Stack development, delivering the company’s official website and AI-powered internal dashboards. Engineered dynamic forms and integrated Python/Django APIs, automating workflows to reduce manual processes by 40%. Leveraged AWS for scalable cloud deployments while optimizing SQL databases for reliability."
                 },
                 {
                     role: "Frontend Developer Internship",
                     company: "Flit Webs",
                     period: "Dec 2019 - Apr 2020",
-                    desc: "Kickstarted my developer journey by building responsive UI components and interactive web applications. Gained foundational experience in Angular and agile development practices."
+                    desc: "Accelerated from core web technologies to building complex, interactive applications using Angular. Collaborated in an agile startup environment to deliver responsive UI components and integrate RESTful APIs, establishing a strong foundation in modern web development and software lifecycles."
                 }
             ]
         },
@@ -122,12 +122,12 @@ export const TRANSLATIONS: Record<Language, any> = {
             greeting: "नमस्ते, मैं हूँ",
             name: "शिल्पी लश्करी",
             role: "फुल-स्टैक वेब डेवलपर",
-            description: "4+ वर्षों के अनुभव के साथ स्केलेबल और उच्च-प्रदर्शन वेब एप्लिकेशन बनाने में माहिर।",
+            description: "4+ वर्षों के अनुभव के साथ स्केलेबल और उच्च-प्रदर्शन वेब ऐप्स बनाने वाले फुल-स्टैक वेब डेवलपर।",
             sayHi: "नमस्ते कहें!"
         },
         about: {
             title: "मेरे बारे में",
-            p1: "मैं <span class=\"text-highlight\">Node.js</span> के साथ मजबूत बैकएंड और <span class=\"text-highlight\">Angular & React</span> का उपयोग करके आकर्षक फ्रंटएंड बनाने में विशेषज्ञ हूँ। 4 से अधिक वर्षों के अनुभव के साथ, मैं जटिल तर्क और बेहतरीन यूजर इंटरफेस के बीच की खाई को पाटती हूँ।",
+            p1: "मैं एक <span class=\"text-highlight\">फुल-स्टैक वेब डेवलपर</span> हूँ और मुझे स्केलेबल वेब एप्लिकेशन बनाने का 4+ वर्षों का अनुभव है। मेरी विशेषज्ञता <span class=\"text-highlight\">Node.js</span> के साथ मजबूत बैकएंड और <span class=\"text-highlight\">Angular & React</span> का उपयोग करके आकर्षक फ्रंटएंड बनाने में है।",
             p2: "मुझे जटिल चुनौतियों को हल करना पसंद है, चाहे वह डेटाबेस ऑप्टिमाइज़ेशन हो या <span class=\"text-highlight\">AI मॉडल</span> का एकीकरण।"
         },
         experience: {
