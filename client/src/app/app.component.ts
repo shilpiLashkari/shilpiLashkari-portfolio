@@ -13,11 +13,12 @@ import { LoaderComponent } from './components/loader/loader.component';
 import { HobbiesComponent } from './components/hobbies/hobbies';
 import { TerminalComponent } from './components/terminal/terminal.component';
 import { SkillsComponent } from './components/skills/skills.component';
+import { ProjectService } from './services/project.service';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  // Removed OnPush for maximum stability during debugging
   imports: [
     CommonModule,
     BackgroundAnimationComponent,
@@ -85,8 +86,8 @@ import { SkillsComponent } from './components/skills/skills.component';
 
       <!-- Content -->
       <div class="relative z-10 scroll-smooth transition-all duration-1000 ease-out delay-300"
-        [class.opacity-0]="isLoading()" [class.translate-y-10]="isLoading()" [class.opacity-100]="!isLoading()"
-        [class.translate-y-0]="!isLoading()">
+        [class.opacity-0]="isLoading()" [class.opacity-100]="!isLoading()"
+        [style.transform]="isLoading() ? 'translateY(2.5rem)' : 'none'">
         
         <app-hero id="home"></app-hero>
 
@@ -106,8 +107,7 @@ import { SkillsComponent } from './components/skills/skills.component';
         </div>
 
         <div id="projects">
-          @defer (on viewport) { <app-projects></app-projects> } 
-          @placeholder { <div class="h-[800px] dark:bg-black bg-white"></div> }
+          <app-projects></app-projects>
         </div>
 
         <div id="hobbies">
@@ -125,17 +125,157 @@ import { SkillsComponent } from './components/skills/skills.component';
 
       @defer (on interaction; on timer(5s)) { <app-chat-widget></app-chat-widget> } 
       @placeholder { <div class="fixed bottom-6 right-6 w-16 h-16 bg-fuchsia-600/20 rounded-[2rem] animate-pulse"></div> }
+
+      <!-- Project Detail Modal (Moved to Root for Stacking Context) -->
+      <div *ngIf="ps.selectedProjectIndex() !== null" class="fixed inset-0 z-[10000] flex items-center justify-center p-4">
+
+          <!-- Backdrop -->
+          <div class="fixed inset-0 bg-black/90 backdrop-blur-xl" (click)="ps.closeAll()"></div>
+
+          <!-- Modal Content Box -->
+          <div *ngIf="ps.selectedProject() as project"
+              class="relative w-full max-w-5xl h-auto max-h-[90vh] dark:bg-gray-950 bg-white border dark:border-fuchsia-500/20 border-gray-200 rounded-[2rem] shadow-[0_0_50px_rgba(0,0,0,0.5)] overflow-hidden flex flex-col items-stretch pointer-events-auto">
+              
+              <!-- Scrollable Body -->
+              <div class="overflow-y-auto custom-scrollbar p-6 md:p-12 flex-1">
+                  
+                  <!-- Header -->
+                  <div class="flex justify-between items-start mb-8">
+                      <div>
+                          <span class="text-fuchsia-400 font-mono text-sm uppercase tracking-[0.2em]">{{
+                              project.type }}</span>
+                          <h2 class="text-3xl md:text-5xl font-bold dark:text-white text-gray-900 mt-4 leading-tight">{{
+                              ts.t.projects.list[ps.selectedProjectIndex()!]?.name || project.name }}</h2>
+                      </div>
+                      <button (click)="ps.closeAll()"
+                          class="p-4 rounded-2xl dark:bg-gray-900 bg-gray-100 border dark:border-gray-800 border-gray-300 dark:text-gray-400 text-gray-600 dark:hover:text-white hover:text-gray-900 transition-colors">
+                          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                  d="M6 18L18 6M6 6l12 12" />
+                          </svg>
+                      </button>
+                  </div>
+
+                  <!-- Image Carousel -->
+                  <div
+                      class="relative aspect-video rounded-2xl overflow-hidden mb-12 dark:bg-gray-900 bg-gray-200 group/carousel border dark:border-gray-800 border-gray-300">
+                      <img [src]="project.images[project.currentImgIndex]"
+                          class="w-full h-full object-cover"
+                          alt="Project screenshot">
+
+                      <button *ngIf="project.images.length > 1" (click)="ps.prevImage()"
+                          class="absolute left-4 top-1/2 -translate-y-1/2 p-3 rounded-xl bg-black/50 backdrop-blur-md border border-white/10 text-white hover:bg-fuchsia-600 transition-colors">
+                          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                  d="M15 19l-7-7 7-7" />
+                          </svg>
+                      </button>
+
+                      <button *ngIf="project.images.length > 1" (click)="ps.nextImage()"
+                          class="absolute right-4 top-1/2 -translate-y-1/2 p-3 rounded-xl bg-black/50 backdrop-blur-md border border-white/10 text-white hover:bg-fuchsia-600 transition-colors">
+                          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                  d="M9 5l7 7-7 7" />
+                          </svg>
+                      </button>
+
+                      <div *ngIf="project.images.length > 1" class="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-1.5">
+                          <div *ngFor="let img of project.images; let imgIdx = index"
+                              class="w-6 h-1 rounded-full transition-colors"
+                              [class.bg-fuchsia-500]="imgIdx === project.currentImgIndex"
+                              [class.bg-white/20]="imgIdx !== project.currentImgIndex"></div>
+                      </div>
+                  </div>
+
+                  <div class="grid md:grid-cols-2 gap-12">
+                      <div class="space-y-8">
+                          <div class="p-8 dark:bg-gray-900/30 bg-gray-50 rounded-3xl border dark:border-gray-800 border-gray-200">
+                              <h4 class="text-fuchsia-400 font-mono text-xs uppercase tracking-widest mb-4 font-bold">
+                                  {{ ts.t.projects.challenge }}
+                              </h4>
+                              <p class="dark:text-gray-300 text-gray-700 leading-relaxed">{{
+                                  ts.t.projects.list[ps.selectedProjectIndex()!]?.problem || project.problem }}</p>
+                          </div>
+                          <div class="p-8 dark:bg-gray-900/30 bg-gray-50 rounded-3xl border dark:border-gray-800 border-gray-200">
+                              <h4 class="text-fuchsia-400 font-mono text-xs uppercase tracking-widest mb-4 font-bold">
+                                  {{ ts.t.projects.solution }}
+                              </h4>
+                              <p class="dark:text-gray-300 text-gray-700 leading-relaxed">{{
+                                  ts.t.projects.list[ps.selectedProjectIndex()!]?.solution || project.solution }}</p>
+                          </div>
+                      </div>
+
+                      <div class="space-y-8">
+                          <div class="p-8 dark:bg-gray-900/30 bg-gray-50 rounded-3xl border dark:border-gray-800 border-gray-200">
+                              <h4 class="text-fuchsia-400 font-mono text-xs uppercase tracking-widest mb-4 font-bold">
+                                  Technologies
+                              </h4>
+                              <div class="flex flex-wrap gap-2">
+                                  <span *ngFor="let t of project.tech.be"
+                                      class="px-3 py-1 bg-fuchsia-500/10 border border-fuchsia-500/20 text-fuchsia-400 text-[10px] font-mono rounded-full uppercase">{{
+                                      t }}</span>
+                                  <span *ngFor="let t of project.tech.db"
+                                      class="px-3 py-1 dark:bg-white/5 bg-gray-200 border dark:border-white/10 border-gray-300 dark:text-gray-300 text-gray-700 text-[10px] font-mono rounded-full uppercase">{{
+                                      t }}</span>
+                              </div>
+                          </div>
+                          <div class="p-8 dark:bg-fuchsia-500/5 bg-fuchsia-50 rounded-3xl border dark:border-fuchsia-500/10 border-fuchsia-200">
+                              <h4 class="text-fuchsia-400 font-mono text-xs uppercase tracking-widest mb-4 font-bold">
+                                  {{ ts.t.projects.outcome }}
+                              </h4>
+                              <p class="dark:text-white text-gray-900 leading-relaxed font-semibold italic">
+                                  "{{ ts.t.projects.list[ps.selectedProjectIndex()!]?.outcome || project.outcome }}"
+                              </p>
+                          </div>
+                      </div>
+                  </div>
+
+                  <!-- Conclusions Section -->
+                  <div *ngIf="project.conclusions && project.conclusions.length > 0" class="mt-12 p-8 dark:bg-gray-900/20 bg-gray-50 rounded-3xl border dark:border-gray-800 border-gray-200">
+                      <h4 class="text-fuchsia-400 font-mono text-xs uppercase tracking-widest mb-6 border-b dark:border-gray-800 border-gray-200 pb-4 font-bold">
+                          {{ ts.t.projects.conclusions || 'Conclusions' }}
+                      </h4>
+                      <ul class="grid md:grid-cols-2 gap-x-8 gap-y-4">
+                          <li *ngFor="let conclusion of project.conclusions" class="flex items-start gap-4">
+                              <div class="mt-1.5 w-1.5 h-1.5 rounded-full bg-fuchsia-500 shadow-[0_0_10px_rgba(217,70,239,0.5)]"></div>
+                              <p class="dark:text-gray-400 text-gray-600 text-sm leading-relaxed">{{ conclusion }}</p>
+                          </li>
+                      </ul>
+                  </div>
+
+                  <!-- Action Button -->
+                  <div *ngIf="project.liveUrl" class="my-12 flex justify-center">
+                      <a [href]="project.liveUrl" target="_blank"
+                          class="group relative inline-flex items-center gap-3 px-10 py-5 bg-fuchsia-600 hover:bg-fuchsia-500 text-white font-bold rounded-2xl transition-all duration-300 transform hover:scale-105 shadow-[0_0_20px_rgba(192,38,211,0.3)] hover:shadow-[0_0_30px_rgba(192,38,211,0.5)]">
+                          <span>Visit Live Site</span>
+                          <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                          </svg>
+                      </a>
+                  </div>
+
+              </div>
+          </div>
+      </div>
     </main>
   `,
   styles: []
 })
 export class AppComponent implements OnInit {
   ts = inject(TranslationService);
+  ps = inject(ProjectService);
 
   title = signal('portfolio-app');
   isDarkMode = signal(true);
   isLoading = signal(true);
   activeSection = signal('home');
+
+  @HostListener('document:keydown.escape')
+  handleEscape() {
+    if (this.ps.selectedProjectIndex() !== null) {
+      this.ps.closeAll();
+    }
+  }
 
   @HostListener('document:click')
   playClickSound() {
@@ -204,6 +344,14 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
+    if (typeof window !== 'undefined') {
+      // Force scroll to top on reload
+      window.scrollTo(0, 0);
+      if ('scrollRestoration' in history) {
+        history.scrollRestoration = 'manual';
+      }
+    }
+
     setTimeout(() => {
       this.isLoading.set(false);
     }, 6500);

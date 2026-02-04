@@ -49,31 +49,48 @@ export const TRANSLATIONS: Record<Language, any> = {
             challenge: "Challenge",
             solution: "Solution",
             outcome: "Outcome",
+            conclusions: "Conclusions",
             future: "Key Tech",
             list: [
                 {
-                    name: "ICEGATE E-Governance Portal",
-                    summary: "Scalable trade operations portal for Indian Customs.",
-                    problem: "Modernizing legacy trade systems for high-performance and security.",
-                    solution: "Designed responsive Angular 17 components integrated with Spring Boot APIs. Implemented secure data handling.",
-                    outcome: "Improved data efficiency by 30% and enhanced accessibility.",
-                    future: "Angular 17 • Spring Boot"
+                    name: "Human-in-the-Loop Response Orchestrator",
+                    summary: "An enterprise-grade SRE platform designed to transform infrastructure chaos into secure, intelligent action. It orchestrates the entire incident lifecycle by clustering thousands of noisy alerts from multi-cloud environments into manageable, actionable situations. By keeping a human at the center of every critical remediation step, it ensures that automated scripts only execute with explicit approval, bridging the gap between raw telemetry and safe, rapid infrastructure recovery.",
+                    problem: "Alert fatigue, noisy multi-cloud notifications, and risky unsupervised production automation.",
+                    solution: "Smart heuristic clustering and mandatory human-approval gates for all remediation scripts.",
+                    outcome: "Zero-latency response for critical production outages with 100% human oversight.",
+                    future: "Angular • React • Node.js • Python"
                 },
                 {
-                    name: "Cloud Software Group Modernization",
-                    summary: "Enterprise-grade cloud application transformation.",
-                    problem: "Legacy systems suffered from performance bottlenecks and lack of cloud scalability.",
-                    solution: "Engineered microservices and optimized MySQL DBs. Automated CI/CD pipelines.",
-                    outcome: "Deployment speed improved by 45%.",
-                    future: "Angular • Node.js • AWS"
+                    name: "Nexura AI-Powered CRM Platform",
+                    summary: "A sophisticated, enterprise-ready Customer Relationship Management platform featuring a high-performance visual deal pipeline and global search. It integrates a context-aware AI assistant powered by Google Gemini that analyzes live business metrics to provide real-time growth intelligence and sales forecasting. Built on a robust monorepo architecture, it offers a unified dashboard for managing complex accounts with sub-second data retrieval. ",
+                    problem: "Fragmented sales data across teams and a lack of real-time, AI-driven growth forecasting.",
+                    solution: "Unified dashboard with a Gemini-powered context-aware assistant for business intelligence.",
+                    outcome: "Streamlined sales tracking and forecasting with automated, AI-driven business insights.",
+                    future: "React 18 • Node.js • Prisma • Gemini"
                 },
                 {
-                    name: "Althea.ai Intelligence Platform",
-                    summary: "AI-powered internal dashboard and official website.",
-                    problem: "Manual data workflows slowed down operations.",
-                    solution: "Built dynamic web forms and dashboards using Angular and Python/Django APIs.",
-                    outcome: "Reduced manual data processes by 40%.",
-                    future: "Angular • Django • AI"
+                    name: "Production Outage Time-Machine",
+                    summary: "A revolutionary observability 'Time-Machine' that allows SREs to rewind system states to the exact second of a production failure. By overlaying deployment events, configuration changes, and git commits directly onto live D3.js metric waves, it eliminates the guesswork during high-pressure incidents. This micro-frontend ecosystem synchronizes multiple 'war room' views to provide a unified diagnostic workspace for rapid root-cause analysis.",
+                    problem: "Difficulty correlating rapid deployment cycles with latent performance spikes during outages.",
+                    solution: "Micro-frontend event-recording system that overlays system changes onto live D3.js metrics.",
+                    outcome: "Rapid root-cause analysis enabling 'debugging like a scientist' with historical state scrubbing.",
+                    future: "Angular 17 • D3.js • Socket.io • RxJS"
+                },
+                {
+                    name: "Flux Experimental Generative Browser",
+                    summary: "An experimental 'Generative Web' simulation that explores a future where websites are hallucinated on the fly based on user search intent rather than being retrieved from static servers. Using a custom heuristic 'Flux Engine' and GPT-4, it generates unique, production-ready HTML and Tailwind CSS in real-time. The prototype features a complete browser shell with history tracking and state persistence, blurring the line between web browsing and imagination.",
+                    problem: "The static nature of the traditional web content limits creative exploration and spontaneous generation.",
+                    solution: "Heuristic flux engine and LLM integration to build fully-functional sites on the fly per user prompt.",
+                    outcome: "Infinite navigation with zero 404 errors in a dynamically hallucinated generative ecosystem.",
+                    future: "React • Framer Motion • OpenAI API"
+                },
+                {
+                    name: "Smart String Analyser",
+                    summary: "A high-performance, logic-driven text analysis engine built to demonstrate core JavaScript engineering principles and efficient real-time processing. It handles complex tasks like character frequency mapping, palindrome detection, and pattern recognition using purely functional logic. The project emphasizes clean code, debounced event handling, and optimized DOM manipulation without the overhead of heavy frameworks, showcasing a logic-first approach to web engineering.",
+                    problem: "Real-time analysis tools often suffer from input lag and fail to handle complex edge-case symbols.",
+                    solution: "Vanilla JS engine utilizing debouncing, frequency mapping, and pure functional logic modules.",
+                    outcome: "Scalable, logic-first demonstration of core web engineering and high-performance text processing.",
+                    future: "Vanilla JS • Regex • Bootstrap"
                 }
             ]
         },
@@ -159,31 +176,48 @@ export const TRANSLATIONS: Record<Language, any> = {
             challenge: "चुनौती",
             solution: "समाधान",
             outcome: "परिणाम",
+            conclusions: "निष्कर्ष (Conclusions)",
             future: "मुख्य तकनीक",
             list: [
                 {
-                    name: "ICEGATE ई-गवर्नेंस पोर्टल",
-                    summary: "भारतीय सीमा शुल्क के लिए स्केलेबल व्यापार संचालन पोर्टल।",
-                    problem: "उच्च प्रदर्शन और सुरक्षा के लिए पुराने व्यापार प्रणालियों का आधुनिकीकरण।",
-                    solution: "Spring Boot API के साथ एकीकृत उत्तरदायी Angular 17 घटकों को डिज़ाइन किया। सुरक्षित डेटा हैंडलिंग लागू की गई।",
-                    outcome: "डेटा दक्षता में 30% सुधार हुआ और पहुंच में वृद्धि हुई।",
-                    future: "Angular 17 • Spring Boot"
+                    name: "ह्यूमन-इन-द-लूप रिस्पॉन्स ऑर्केस्ट्रेटर",
+                    summary: "एक एंटरप्राइज-ग्रेड SRE प्लेटफॉर्म जिसे इंफ्रास्ट्रक्चर की अराजकता को सुरक्षित, बुद्धिमान कार्रवाई में बदलने के लिए डिज़ाइन किया गया है। यह मल्टी-क्लाउड वातावरण से हजारों शोर भरे अलर्ट को प्रबंधनीय, कार्रवाई योग्य स्थितियों में क्लस्टर करके पूरे घटना जीवनचक्र को व्यवस्थित करता है। हर महत्वपूर्ण सुधार चरण के केंद्र में एक मानवीय हस्तक्षेप रखकर, यह सुनिश्चित करता है कि स्वचालित स्क्रिप्ट केवल स्पष्ट अनुमोदन के साथ निष्पादित हों, जिससे टेलीमेट्री और सुरक्षित इंफ्रास्ट्रक्चर रिकवरी के बीच की खाई को पाटा जा सके।",
+                    problem: "अलर्ट थकान, शोर भरे मल्टी-क्लाउड नोटिफिकेशन और जोखिम भरा असुरक्षित ऑटोमेशन।",
+                    solution: "स्मार्ट ह्यूरिस्टिक क्लस्टरिंग और सभी सुधारात्मक स्क्रिप्ट के लिए अनिवार्य मानवीय स्वीकृति द्वार।",
+                    outcome: "100% मानवीय निरीक्षण के साथ क्रिटिकल आउटेज के लिए जीरो-लेटेंसी रिस्पॉन्स।",
+                    future: "Angular • React • Node.js"
                 },
                 {
-                    name: "Cloud Software Group आधुनिकीकरण",
-                    summary: "एंटरप्राइज-ग्रेड क्लाउड एप्लिकेशन परिवर्तन।",
-                    problem: "पुरानी प्रणालियों में प्रदर्शन बाधाएँ और क्लाउड स्केलेबिलिटी की कमी थी।",
-                    solution: "माइक्रोसर्विसेज का निर्माण किया और MySQL DB को अनुकूलित किया। स्वचालित CI/CD पाइपलाइन्स।",
-                    outcome: "तैनाती की गति में 45% सुधार हुआ।",
-                    future: "Angular • Node.js • AWS"
+                    name: "नेक्सुरा (Nexura) AI-पावर्ड CRM प्लेटफॉर्म",
+                    summary: "एक परिष्कृत, एंटरप्राइज-रेडी CRM प्लेटफॉर्म जिसमें हाई-परफॉरमेंस विजुअल डील पाइपलाइन और ग्लोबल सर्च है। इसमें गूगल जेमिनी द्वारा संचालित एक संदर्भ-जागरूक AI सहायक है जो रीयल-टाइम विकास खुफिया और बिक्री पूर्वानुमान प्रदान करने के लिए लाइव व्यावसायिक मेट्रिक्स का विश्लेषण करता है। एक मजबूत मोनोरेपो आर्किटेक्चर पर निर्मित, यह सब-सेकंड डेटा पुनर्प्राप्ति के साथ जटिल खातों के प्रबंधन के लिए एक एकीकृत डैशबोर्ड प्रदान करता है।",
+                    problem: "टीमों के बीच बिखरा हुआ सेल्स डेटा और रीयल-टाइम, AI-संचालित विकास पूर्वानुमान का अभाव।",
+                    solution: "व्यावसायिक खुफिया के लिए जेमिनी-पावर्ड स्मार्ट सहायक के साथ एकीकृत डैशबोर्ड।",
+                    outcome: "स्वचालित, AI-संचालित व्यावसायिक अंतर्दृष्टि के साथ बेहतर सेल्स ट्रैकिंग और पूर्वानुमान।",
+                    future: "React 18 • Node.js • Gemini"
                 },
                 {
-                    name: "Althea.ai इंटेलिजेंस प्लेटफॉर्म",
-                    summary: "AI-संचालित आंतरिक डैशबोर्ड और आधिकारिक वेबसाइट।",
-                    problem: "मैन्युअल डेटा वर्कफ़्लो ने संचालन को धीमा कर दिया।",
-                    solution: "Angular और Python/Django API का उपयोग करके गतिशील वेब फॉर्म और डैशबोर्ड बनाए।",
-                    outcome: "मैन्युअल डेटा प्रक्रियाओं को 40% कम किया।",
-                    future: "Angular • Django • AI"
+                    name: "प्रोडक्शन आउटेज टाइम-मशीन",
+                    summary: "एक क्रांतिकारी ऑब्जर्वेबिलिटी 'टाइम-मशीन' जो SRE को प्रोडक्शन विफलता के सटीक सेकंड तक सिस्टम स्टेट्स को रिवाइंड करने की अनुमति देती है। लाइव D3.js मेट्रिक्स पर परिनियोजन घटनाओं, कॉन्फ़िगरेशन परिवर्तनों और गिट कमिट्स को सीधे ओवरले करके, यह अनुमान को समाप्त करता है। यह माइक्रो-Frontend इकोसिस्टम तेजी से मूल कारण विश्लेषण के लिए एक एकीकृत नैदानिक कार्यक्षेत्र प्रदान करने के लिए कई 'वॉर रूम' दृश्यों को सिंक्रनाइज़ करता है।",
+                    problem: "तेजी से तैनाती चक्रों और आउटेज के दौरान विलंबता स्पाइक्स के बीच संबंध बनाना कठिन।",
+                    solution: "माइक्रो-फ्रंटएंड इवेंट-रिकॉर्डिंग सिस्टम जो लाइव D3.js मेट्रिक्स पर परिवर्तनों को दिखाता है।",
+                    outcome: "विजुअल हिस्टोरिकल स्क्रबिंग के साथ तेज़ मूल कारण विश्लेषण 'Debugging like a scientist' सक्षम करता है।",
+                    future: "Angular 17 • D3.js • Socket.io"
+                },
+                {
+                    name: "फ्लक्स (Flux) प्रयोगात्मक जनरेटिव ब्राउज़र",
+                    summary: "एक प्रयोगात्मक 'जनरेटिव वेब' सिमुलेशन जो एक ऐसे भविष्य की खोज करता है जहाँ वेबसाइटें स्थिर सर्वर से प्राप्त होने के बजाय उपयोगकर्ता की खोज के आधार पर ऑन-द-फ्लाई निर्मित होती हैं। एक कस्टम ह्यूरिस्टिक 'फ्लक्स इंजन' और GPT-4 का उपयोग करके, यह वास्तविक समय में अद्वितीय, प्रोडक्शन-रेडी HTML और Tailwind CSS बनाता है। इसमें इतिहास ट्रैकिंग और स्थिति दृढ़ता के साथ एक पूर्ण ब्राउज़र शेल है, जो वेब ब्राउज़िंग और कल्पना के बीच की रेखा को धुंधला कर देता है।",
+                    problem: "पारंपरिक वेब सामग्री की स्थिर प्रकृति रचनात्मक अन्वेषण और स्वतः पीढ़ी को सीमित करती है।",
+                    solution: "उपयोगकर्ता प्रॉम्प्ट के अनुसार चलते-फिरते साइट बनाने के लिए LLM एकीकरण और फ्लक्स इंजन।",
+                    outcome: "एक जनरेटिव इकोसिस्टम में बिना 404 के अनंत नेविगेशन और ऑन-डिमांड कंटेंट जेनरेशन।",
+                    future: "React • Framer Motion • OpenAI"
+                },
+                {
+                    name: "स्मार्ट स्ट्रिंग एनालाइज़र",
+                    summary: "एक हाई-परफॉरमेंस, लॉजिक-संचालित टेक्स्ट विश्लेषण इंजन जिसे कोर जावास्क्रिप्ट इंजीनियरिंग सिद्धांतों और कुशल रीयल-टाइम प्रसंस्करण प्रदर्शित करने के लिए बनाया गया है। यह शुद्ध कार्यात्मक तर्क का उपयोग करके चरित्र आवृत्ति मानचित्रण, विलोम शब्द (palindrome) पहचान और पैटर्न पहचान जैसे कार्यों को संभालता है। यह इंजन भारी फ्रेमवर्क के बिना, स्वच्छ कोड, डिबाउंस इवेंट हैंडलिंग और अनुकूलित DOM हेरफेर पर जोर देता है, जो वेब इंजीनियरिंग के लिए एक लॉजिक-फर्स्ट दृष्टिकोण दिखाता है।",
+                    problem: "रीयल-टाइम विश्लेषण उपकरण अक्सर इनपुट लैग से ग्रस्त होते हैं और विशेष प्रतीकों को संभालने में विफल रहते।",
+                    solution: "डिबाउंसिंग, फ़्रीक्वेंसी मैपिंग और शुद्ध लॉजिक फ़ंक्शंस का उपयोग करने वाला वेनिला JS इंजन।",
+                    outcome: "कोर वेब इंजीनियरिंग और हाई-परफॉरमेंस टेक्स्ट प्रोसेसिंग का स्केलेबल, लॉजिक-फर्स्ट प्रदर्शन।",
+                    future: "Vanilla JS • Regex • Bootstrap"
                 }
             ]
         },
