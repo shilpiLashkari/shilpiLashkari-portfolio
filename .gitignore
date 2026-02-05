@@ -6,6 +6,9 @@ dist
 /out-tsc
 /bazel-out
 
+# Firebase
+.firebase
+
 # Node
 node_modules
 npm-debug.log
